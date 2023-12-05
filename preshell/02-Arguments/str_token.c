@@ -87,7 +87,8 @@ void print_array(char **a)
 	}
 }
 
-/** main - This program prints the list of words of a string entered by a user.
+/** 
+ * main - This program prints the list of words of a string entered by a user.
  *
  * Return: Always 0;
  */
