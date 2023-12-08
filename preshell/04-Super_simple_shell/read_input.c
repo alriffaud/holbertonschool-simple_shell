@@ -11,7 +11,7 @@
 void read_input(char *str, size_t size)
 {
 	/*Check for errors or end-of-file*/
-	if (fgets(str, size, stdin) == NULL)
+	if (getline(&str, &size, stdin) == -1)
 	{
 		if (feof(stdin))
 		{

@@ -12,6 +12,6 @@
 /* Functions */
 void show_prompt(void);
 void read_input(char *str, size_t size);
-void run_command(const char *str);
+void run_command(char *str);
 
 #endif

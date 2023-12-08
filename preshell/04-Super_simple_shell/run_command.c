@@ -8,31 +8,33 @@
  *
  * Return: None.
  */
-void run_command(const char *str)
+void run_command(char *str)
 {
 	char *args[2];
 	char *env[] = {NULL};
 	char path[100];
 	pid_t child_pid;
+	char *token;
 
+	token = strtok(str, " ");
 	child_pid = fork();
 	if (child_pid == -1)
 	{
 		perror("Error:");
 		exit(EXIT_FAILURE);
 	}
-	if (child_pid == 0)
+	if (child_pid == 0 && token != NULL)
 	{
-		args[0] = malloc(strlen(str) + 1);
+		args[0] = malloc(strlen(token) + 1);
 		if (args[0] == NULL)
 			exit(EXIT_FAILURE);
-		strcpy(args[0], str);
+		strcpy(args[0], token);
 		args[1]= NULL;
 		/* Attempt to execute with "./%s" */
-		snprintf(path, sizeof(path), "./%s", str);
+		snprintf(path, sizeof(path), "./%s", token);
 		execve(path, args, env);
 		/* If execve with "./%s" fails, try "/%s*/
-		snprintf(path, sizeof(path), "/%s", str);
+		snprintf(path, sizeof(path), "/%s", token);
 		execve(path, args, env);
 		/* If both execve calls fail, free the allocated memory */
 		free(args[0]);
