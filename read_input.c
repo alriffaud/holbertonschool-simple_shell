@@ -15,11 +15,13 @@ void read_input(char **str, size_t *size)
 	{
 		if (feof(stdin))
 		{
+			free(str);
 			printf("\n");
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
+			free(str);
 			perror("Error reading line");
 			exit(EXIT_FAILURE);
 		}
@@ -34,6 +36,7 @@ void read_input(char **str, size_t *size)
 		(*str)++;
 	if (strcmp(*str, "exit") == 0)
 	{
+		free(str);
 		exit(EXIT_SUCCESS);
 	}
 }

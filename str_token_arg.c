@@ -9,14 +9,14 @@
  */
 int len_str_arg(char *str)
 {
-	int count = 1, i = 0;
+	int count = 1, i = 0, len;
 
-	if (str == NULL || strlen(str) == 0)
+	if (str == NULL || (len = strlen(str)) == 0)
 	{
 		return (0);
 	}
 
-	while (str[i] != '\0')
+	while (i < len)
 	{
 		if (str[i] == ' ' && str[i + 1] != ' ')
 		{
@@ -37,9 +37,9 @@ char **str_token_arg(char *str)
 {
 	char **new;
 	char *token;
-	int i = 0, j, n;
+	int i = 0, j, n, len;
 
-	if (str == NULL || strlen(str) == 0)
+	if (str == NULL || (len = strlen(str)) == 0)
 		return (NULL);
 	/* Skip leading spaces */
 	while (*str != '\0' && *str == ' ')
@@ -51,7 +51,8 @@ char **str_token_arg(char *str)
 	token = strtok(str, " ");
 	while (token != NULL)
 	{
-		new[i] = strdup(token);
+		len = strlen(token);
+		new[i] = malloc(len + 1);
 		if (new[i] == NULL)
 		{
 			for (j = 0; j < i; j++)
@@ -62,6 +63,7 @@ char **str_token_arg(char *str)
 			free(new);
 			return (NULL);
 		}
+		strcpy(new[i], token);
 		token = strtok(NULL, " ");
 		i++;
 	}

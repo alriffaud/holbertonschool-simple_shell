@@ -17,8 +17,17 @@ int main(void)
 		show_prompt();
 		read_input(&str, &size);
 		args = str_token_arg(str);
-		if (strcmp(args[0], "exit") == 0)
+		/*if (strcmp(args[0], "exit") == 0)
+		{
+			for (i = 0; args != NULL && args[i] != NULL; i++)
+			{
+				free(args[i]);
+			}
+			free(args);
+			args = NULL;
+			free(str);
 			exit(EXIT_SUCCESS);
+		}*/
 		run_command(args);
 		/* Free memory allocated for arguments */
 		for (i = 0; args != NULL && args[i] != NULL; i++)
@@ -26,6 +35,7 @@ int main(void)
 			free(args[i]);
 		}
 		free(args);
+		args = NULL;
 	}
 	free(str);
 	return (0);
