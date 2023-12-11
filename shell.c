@@ -16,10 +16,10 @@ int main(void)
 	{
 		show_prompt();
 		read_input(&str, &size);
-		/*args = str_token_arg(str);*/
-		/*if (strcmp(args[0], "exit") == 0)*/
-			/*exit(EXIT_SUCCESS);*/
-		run_command(str);/*args*/
+		args = str_token_arg(str);
+		if (strcmp(args[0], "exit") == 0)
+			exit(EXIT_SUCCESS);
+		run_command(args);
 		/* Free memory allocated for arguments */
 		for (i = 0; args != NULL && args[i] != NULL; i++)
 		{

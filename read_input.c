@@ -32,10 +32,8 @@ void read_input(char **str, size_t *size)
 	/* Skip leading spaces */
 	while (*str != NULL && **str != '\0' && **str == ' ')
 		(*str)++;
-	/*
-	 * if (strcmp(*str, "exit") == 0)
-	 * {
-	 *	exit(EXIT_SUCCESS);
-	 * }
-	*/
+	if (strcmp(*str, "exit") == 0)
+	{
+		exit(EXIT_SUCCESS);
+	}
 }

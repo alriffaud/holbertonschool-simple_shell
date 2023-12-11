@@ -3,27 +3,23 @@
 /**
  * run_command - This function creates a child process to execute the command
  * entered.
- * @str: It's a pointer to the list of arguments.
+ * @args: It's a pointer to the list of arguments.
  *
  * Return: None.
  */
-void run_command(char *str) /* **args */
+void run_command(char **args)
 {
-	char *args[2];
 	char *env[] = {NULL};
 	pid_t child_pid;
 	char *name;
 	char path[100];
-	char *token;
 
-	token = strtok(str, " ");
-	/*if (args == NULL || args[0] == NULL)*/
-		/*return;*/
-	name = get_command(token);/*args[0]*/
+	if (args == NULL || args[0] == NULL)
+		return;
+	name = get_command(args[0]);
 	if (name == NULL)
 		return;
-	if ((get_and_find(name) == 1 || get_and_find(token) == 1) /*args[0]*/
-			&& strcmp(token, "ls") != 0)/*args[0]*/
+	if ((get_and_find(name) == 1 || get_and_find(args[0]) == 1))
 	{
 		child_pid = fork();
 		if (child_pid == -1)
@@ -34,11 +30,6 @@ void run_command(char *str) /* **args */
 		}
 		if (child_pid == 0)
 		{
-			args[0] = malloc(strlen(token) + 1);
-			if (args[0] == NULL)
-				exit(EXIT_FAILURE);
-			strcpy(args[0], token);
-			args[1] = NULL;
 			snprintf(path, sizeof(path), "./%s", name);
 			execve(path, args, env);
 			snprintf(path, sizeof(path), "/bin/%s", name);
