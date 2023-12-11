@@ -8,10 +8,10 @@
  *
  * Return: None.
  */
-void read_input(char *str, size_t size)
+void read_input(char **str, size_t *size)
 {
 	/*Check for errors or end-of-file*/
-	if (getline(&str, &size, stdin) == -1)
+	if (getline(str, size, stdin) == -1)
 	{
 		if (feof(stdin))
 		{
@@ -25,5 +25,15 @@ void read_input(char *str, size_t size)
 		}
 	}
 	/* Remove the new line */
-	str[strcspn(str, "\n")] = '\0';
+	(*str)[strcspn(*str, "\n")] = '\0';
+	/* Replace tabs with spaces */
+	while (strcspn(*str, "\t") < strlen(*str))
+		(*str)[strcspn(*str, "\t")] = ' ';
+	/* Skip leading spaces */
+	while (*str != NULL && **str != '\0' && **str == ' ')
+		(*str)++;
+	if (strcmp(*str, "exit") == 0)
+	{
+		exit(EXIT_SUCCESS);
+	}
 }

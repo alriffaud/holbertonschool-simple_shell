@@ -7,13 +7,24 @@
  */
 int main(void)
 {
-	char command[100];
+	char *str = NULL;
+	char **args = NULL;
+	size_t size = 0;
+	int i;
 
-	while(1)
+	while (1)
 	{
 		show_prompt();
-		read_input(command, sizeof(command));
-		run_command(command);
+		read_input(&str, &size);
+		args = str_token_arg(str);
+		run_command(args);
+		/* Free memory allocated for arguments */
+		for (i = 0; args != NULL && args[i] != NULL; i++)
+		{
+			free(args[i]);
+		}
+		free(args);
 	}
+	free(str);
 	return (0);
 }
