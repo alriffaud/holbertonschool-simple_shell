@@ -16,7 +16,7 @@
 /* Functions */
 void show_prompt(void);
 void read_input(char **str, size_t *size);
-void run_command(char *str); /* **args */
+void run_command(char *str);
 char *_getenv(const char *name);
 char **str_token(char *str);
 char **str_token_arg(char *str);
