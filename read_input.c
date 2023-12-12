@@ -10,18 +10,22 @@
  */
 void read_input(char **str, size_t *size)
 {
+	ssize_t read;
+
 	/*Check for errors or end-of-file*/
-	if (getline(str, size, stdin) == -1)
+	read = getline(str, size, stdin);
+	if (read == -1)
 	{
 		if (feof(stdin))
 		{
-			free(str);
-			printf("\n");
+			free(*str);
+			if (isatty(STDIN_FILENO))
+				printf("\n");
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
-			free(str);
+			free(*str);
 			perror("Error reading line");
 			exit(EXIT_FAILURE);
 		}
@@ -31,12 +35,4 @@ void read_input(char **str, size_t *size)
 	/* Replace tabs with spaces */
 	while (strcspn(*str, "\t") < strlen(*str))
 		(*str)[strcspn(*str, "\t")] = ' ';
-	/* Skip leading spaces */
-	while (*str != NULL && **str != '\0' && **str == ' ')
-		(*str)++;
-	if (strcmp(*str, "exit") == 0)
-	{
-		free(str);
-		exit(EXIT_SUCCESS);
-	}
 }

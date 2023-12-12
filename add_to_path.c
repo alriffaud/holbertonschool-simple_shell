@@ -27,7 +27,7 @@ char **add_to_path(char **paths, char *name)
 		{
 			for (j = 0; j < i; j++)
 				free(new_paths[j]);
-			free(new_paths);
+			free(*new_paths);
 			return (NULL);
 		}
 		snprintf(new_paths[i], new_path_length, "%s/%s", paths[i], name);

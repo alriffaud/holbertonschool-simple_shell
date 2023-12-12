@@ -4,10 +4,11 @@
  * run_command - This function creates a child process to execute the command
  * entered.
  * @args: It's a pointer to the list of arguments.
+ * @av: Is a one-dimensional array of strings.
  *
  * Return: None.
  */
-void run_command(char **args)
+void run_command(char **args, char *av)
 {
 	char *env[] = {NULL};
 	pid_t child_pid;
@@ -26,6 +27,7 @@ void run_command(char **args)
 		{
 			perror("Error:");
 			free(name);
+			freeMemory(args);
 			exit(EXIT_FAILURE);
 		}
 		if (child_pid == 0)
@@ -34,12 +36,15 @@ void run_command(char **args)
 			execve(path, args, env);
 			snprintf(path, sizeof(path), "/bin/%s", name);
 			execve(path, args, env);
-			perror("execve");/*args[0]*/
+			perror("execve");
+			freeMemory(args);
+			free(name);
 			exit(EXIT_FAILURE);
 		}
 		else
 			wait(NULL);
+		free(name);
 	}
 	else
-		fprintf(stderr, "./shell: No such file or directory\n"), free(name);
+		fprintf(stderr, "%s: %s: command not found\n", av, args[0]), free(name);
 }

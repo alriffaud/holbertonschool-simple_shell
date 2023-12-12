@@ -2,40 +2,34 @@
 
 /**
  * main - This program executes the shell.
+ * @ac: Is the number of arguments passed to the program.
+ * @av: Is a one-dimensional array of strings.
  *
  * Return: Always 0.
  */
-int main(void)
+int main(int ac, char *av[])
 {
 	char *str = NULL;
 	char **args = NULL;
 	size_t size = 0;
-	int i;
 
+	(void) ac;
 	while (1)
 	{
-		show_prompt();
+		if (isatty(STDIN_FILENO))
+			show_prompt();
 		read_input(&str, &size);
+		if (*str == '\0')
+			continue;
 		args = str_token_arg(str);
-		/*if (strcmp(args[0], "exit") == 0)
+		if (strcmp(args[0], "exit") == 0 || strcmp(str, "exit") == 0)
 		{
-			for (i = 0; args != NULL && args[i] != NULL; i++)
-			{
-				free(args[i]);
-			}
-			free(args);
-			args = NULL;
+			freeMemory(args);
 			free(str);
 			exit(EXIT_SUCCESS);
-		}*/
-		run_command(args);
-		/* Free memory allocated for arguments */
-		for (i = 0; args != NULL && args[i] != NULL; i++)
-		{
-			free(args[i]);
 		}
-		free(args);
-		args = NULL;
+		run_command(args, av[0]);
+		freeMemory(args);
 	}
 	free(str);
 	return (0);

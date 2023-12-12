@@ -16,7 +16,10 @@ char *get_command(char *str)
 	while (token != NULL)
 	{
 		if (lastToken != NULL)
+		{
 			free(lastToken);
+			lastToken = NULL;
+		}
 		lastToken = strdup(token);
 		if (lastToken == NULL)
 			return (NULL);

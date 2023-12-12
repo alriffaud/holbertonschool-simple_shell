@@ -11,7 +11,8 @@ int len_str_arg(char *str)
 {
 	int count = 1, i = 0, len;
 
-	if (str == NULL || (len = strlen(str)) == 0)
+	len = strlen(str);
+	if (str == NULL || len == 0)
 	{
 		return (0);
 	}
@@ -39,7 +40,8 @@ char **str_token_arg(char *str)
 	char *token;
 	int i = 0, j, n, len;
 
-	if (str == NULL || (len = strlen(str)) == 0)
+	len = strlen(str);
+	if (str == NULL || len == 0)
 		return (NULL);
 	/* Skip leading spaces */
 	while (*str != '\0' && *str == ' ')

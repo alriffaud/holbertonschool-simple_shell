@@ -20,12 +20,14 @@ int get_and_find(char *name)
 	if (value == NULL)
 	{
 		fprintf(stderr, "Error: Failed to get PATH\n");
+		free(value);
 		return (-1);
 	}
 	paths = str_token(value);
 	if (paths == NULL)
 	{
 		fprintf(stderr, "Error: Failed to tokenize PATH\n");
+		free(value);
 		return (-1);
 	}
 	paths_name = add_to_path(paths, name);
@@ -35,17 +37,16 @@ int get_and_find(char *name)
 		for (i = 0; paths[i] != NULL; i++)
 			free(paths[i]);
 		free(paths);
+		free(value);
 		return (-1);
 	}
 	res = search_program(paths_name);
 	while (paths_name[j] != NULL)
-	{
-		free(paths_name[j]);
-		j++;
-	}
+		free(paths_name[j]), j++;
 	free(paths_name);
 	for (i = 0; paths[i] != NULL; i++)
 		free(paths[i]);
 	free(paths);
+	free(value);
 	return (res);
 }
