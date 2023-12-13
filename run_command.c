@@ -10,7 +10,7 @@
  */
 void run_command(char **args, char *av)
 {
-	char *env[] = {NULL};
+	char *env[] = {"PATH", NULL};
 	pid_t child_pid;
 	char *name;
 	char path[100];
