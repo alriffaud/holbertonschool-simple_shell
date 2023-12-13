@@ -26,5 +26,6 @@ int search_program(char **paths);
 int get_and_find(char *name);
 char *get_command(char *str);
 void freeMemory(char **args);
+void printenv(void);
 
 #endif

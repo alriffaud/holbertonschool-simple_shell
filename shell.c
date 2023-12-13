@@ -28,6 +28,12 @@ int main(int ac, char *av[])
 			free(str);
 			exit(EXIT_SUCCESS);
 		}
+		if (strcmp(args[0], "env") == 0 || strcmp(str, "env") == 0)
+		{
+			printenv();
+			freeMemory(args);
+			continue;
+		}
 		run_command(args, av[0]);
 		freeMemory(args);
 	}
