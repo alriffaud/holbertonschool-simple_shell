@@ -36,9 +36,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 	* Returns the number of words in a string.
 
 ## Flowchart
-<p>
-	[flowchart_shell.png](https://github.com/alriffaud/holbertonschool-simple_shell/blob/edf3844bbd978d49525148b01175381169d7820b/flowchart_shell.png)
-</p>
+![flowchart_shell.png](https://github.com/alriffaud/holbertonschool-simple_shell/blob/edf3844bbd978d49525148b01175381169d7820b/flowchart_shell.png)
 
 ## Usage
 
