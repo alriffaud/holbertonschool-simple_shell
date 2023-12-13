@@ -46,5 +46,5 @@ void run_command(char **args, char *av)
 		free(name);
 	}
 	else
-		fprintf(stderr, "%s: %s: command not found\n", av, args[0]), free(name);
+		fprintf(stderr, "%s: %s: not found\n", av, args[0]), free(name);
 }
