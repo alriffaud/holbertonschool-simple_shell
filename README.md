@@ -53,8 +53,3 @@ echo "/bin/ls" | ./hsh
 hsh main.c shell.c test_ls_2
 
 
-## Authors
-
-- Germán Silveira <a href="https://github.com/Daldanos" rel="nofollow"><img aling="center" alt="github" src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" height="24" /></a>
-- Alberto Riffaud <a href="https://github.com/alriffaud" rel="nofollow"><img aling="center" alt="github" src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" height="24" /></a>
-El readme, falta parameters y completed projects
