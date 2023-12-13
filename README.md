@@ -9,7 +9,7 @@ This Simple Shell project, is a basic shell implementation with the primary goal
 
 To compile the shell, use the following command:
 
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o shell
 
 ## Files and functions
 
@@ -52,13 +52,12 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 To run the shell, execute the compiled binary:
 
 
-./hsh
+./shell
 
 After launching, the shell will display a prompt, allowing users to input commands.
 Also, you can redirect the command to be executed in non-interactive mode by the Simple Shell:
 
 
-echo "/bin/ls" | ./hsh
-hsh main.c shell.c test_ls_2
+echo "/bin/ls" | ./shell
 
 
