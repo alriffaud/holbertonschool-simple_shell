@@ -10,10 +10,11 @@
  */
 void run_command(char **args, char *av)
 {
-	char *env[] = {"PATH", NULL};
+	char *env[] = {NULL}, *value, *name;
+	char **paths;
 	pid_t child_pid;
-	char *name;
 	char path[100];
+	size_t i;
 
 	if (args == NULL || args[0] == NULL)
 		return;
@@ -22,29 +23,31 @@ void run_command(char **args, char *av)
 		return;
 	if ((get_and_find(name) == 1 || get_and_find(args[0]) == 1))
 	{
+		value = _getenv("PATH");
+		if (value == NULL)
+		{
+			fprintf(stderr, "Error: Failed to get PATH\n"), free(value);
+			return; }
+		paths = str_token(value);
 		child_pid = fork();
 		if (child_pid == -1)
 		{
-			perror("Error:");
-			free(name);
-			freeMemory(args);
-			exit(EXIT_FAILURE);
-		}
+			perror("Error:"), free(name), freeMemory(args);
+			exit(EXIT_FAILURE); }
 		if (child_pid == 0)
 		{
 			snprintf(path, sizeof(path), "./%s", name);
 			execve(path, args, env);
-			snprintf(path, sizeof(path), "/bin/%s", name);
-			execve(path, args, env);
-			perror("execve");
-			freeMemory(args);
-			free(name);
-			exit(EXIT_FAILURE);
-		}
+			for (i = 0; paths[i] != NULL && i < strlen(*paths); i++)
+			{
+				snprintf(path, sizeof(path), "%s/%s", paths[i], name);
+				execve(path, args, env); }
+			perror("execve"), freeMemory(args), free(name);
+			free_paths_value(paths, value);
+			exit(EXIT_FAILURE); }
 		else
 			wait(NULL);
-		free(name);
-	}
+		free_paths_value(paths, value), free(name); }
 	else
 		fprintf(stderr, "%s: %s: not found\n", av, args[0]), free(name);
 }

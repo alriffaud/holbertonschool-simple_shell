@@ -27,5 +27,6 @@ int get_and_find(char *name);
 char *get_command(char *str);
 void freeMemory(char **args);
 void printenv(void);
+void free_paths_value(char **paths, char *value);
 
 #endif
