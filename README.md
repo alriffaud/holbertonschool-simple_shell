@@ -37,23 +37,8 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 ## Flowchart
 <p>
-
+[![](https://mermaid.ink/img/pako:eNptUtlugkAU_ZXJPGmiBpVFeGhT96WNppg0KfgwgauSMjMEhrry7x22xDblaTj3LHdO5oY97gO28D7kJ-9IYoG2Y5ch-b00HDugUQjIPkIYlqAtJGXXRO32090-8hPaxJxG4o6GzgcJBNrzGJXMBYtSsSvPQ8TbbY4Cv9dovK7Xm2azxqUPGt0WCRJHKCWIsHIIZ-nncUoJ85-zEhtJAWK8kI2dLf8CFlwhF1fzkr57YF8gKejThjPJHYvL7KoFxsVoli8gR6Ra3b4kAqhHwrDOnT3kLnJ2EY0CVik2L9v5c4YeyHXsXKaClwpI_npXS84LWuB3f1ezeEhcOZM4lsW-QZKQA1TCVSXs_yOs05fOdP2-kpX6sk7wvivpspbiFqYQUxL48gnc8qGLZZkUXGzJow97kobCxS7LJJWkgtsX5mFLxCm0cBr5RMA4IIeYUGztSZhINCLsk3Nak-Qvtm74jK2u2e_omqloA7Xb08yuYrTwJYc7hm4oal9TdW3Q042sha-FgdIZ6Iahqqai6rrZ100j-wHbEMZK?type=png)](https://mermaid.live/edit#pako:eNptUtlugkAU_ZXJPGmiBpVFeGhT96WNppg0KfgwgauSMjMEhrry7x22xDblaTj3LHdO5oY97gO28D7kJ-9IYoG2Y5ch-b00HDugUQjIPkIYlqAtJGXXRO32090-8hPaxJxG4o6GzgcJBNrzGJXMBYtSsSvPQ8TbbY4Cv9dovK7Xm2azxqUPGt0WCRJHKCWIsHIIZ-nncUoJ85-zEhtJAWK8kI2dLf8CFlwhF1fzkr57YF8gKejThjPJHYvL7KoFxsVoli8gR6Ra3b4kAqhHwrDOnT3kLnJ2EY0CVik2L9v5c4YeyHXsXKaClwpI_npXS84LWuB3f1ezeEhcOZM4lsW-QZKQA1TCVSXs_yOs05fOdP2-kpX6sk7wvivpspbiFqYQUxL48gnc8qGLZZkUXGzJow97kobCxS7LJJWkgtsX5mFLxCm0cBr5RMA4IIeYUGztSZhINCLsk3Nak-Qvtm74jK2u2e_omqloA7Xb08yuYrTwJYc7hm4oal9TdW3Q042sha-FgdIZ6Iahqqai6rrZ100j-wHbEMZK)
 </p>
-
-## Completed projects
-| Task # | Type | Short description |
-| ---: | --- | --- |
-|0 | *Mandatory*     | It handle the conversion specifiers: c, s and %. |
-|1 | *Mandatory*     | Handle the following conversion specifiers: d i |
-|2 | *Mandatory*     | Create a man page for your function.
-|3 | Advanced        | Handle the following custom conversion. b: the unsigned int argument is converted to binary |
-|4 | Advanced        | Handle the following conversion in: u, o, x, X |
-|5 | Advanced        | Use a local buffer of 1024 chars in order to call write as little as possible. |
-|6 | Advanced        | Handle the following conversion specifier: p. |
-|7 | Advanced        | Handle the following custom conversion: S: print the string |
-|8 | Advanced        | Handle the following flag characters for non-custom conversion specifiers: +, space, # |
-|9 | Advanced        | Handle the following length modifiers for non-custom conversion specifiers: l, h. Conversion specifiers to handle: d, i, u, o, x, X |
-
 
 ## Usage
 
@@ -69,23 +54,6 @@ Also, you can redirect the command to be executed in non-interactive mode by the
 echo "/bin/ls" | ./hsh
 hsh main.c shell.c test_ls_2
 
-
-
-## Parameters
-
-| Function                        | conversion specifier                | Description                               |
-| :------------------             | :------------------                 | :---------------------------------------- |
-| print_char                    | c                                 | *print_char*.the function is used to display the character        |
-| print_string                  | s                                 | *print_string*.the function is used to display the string        |
-| _printf                        | d i                             | *print_int*.the int argument is converted to signed decimal notation. |
-| _printf                      | %                                 | **%**. No argument is converted |
-| print_oct                      | o                                 | *print_oct*. the function is used to print a number in octal|
-| print_bin                      | b                                 | *print_bin* the function is used to print a number in binary|
-| print_hex                      | x                                 | *print_hex*. the function is used to print a number in lowercase hexadecimal base|
-| print_hex_upper                      | X                                 | *print_hex_upper*. the function is used to print a number in a uppercase hexadecimal base|
-| print_uint                      | u                                 | *print_uint*. the function is used to print a unsigned integer|
-| non_print_char                      | S \x                                | *non_print_char*. handles non-printable characters: \x, followed by the ASCII code value in uppercase hexadecimal.|
-| print_addr                      | p                                 | *print_addr*. the function is used to print the address of a pointer |
 
 ## Authors
 
