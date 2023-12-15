@@ -22,6 +22,11 @@ int main(int ac, char *av[])
 		if (*str == '\0')
 			continue;
 		args = str_token_arg(str);
+		if (args == NULL || args[0] == NULL)
+		{
+			freeMemory(args);
+			continue;
+		}
 		if (strcmp(args[0], "exit") == 0 || strcmp(str, "exit") == 0)
 		{
 			freeMemory(args);

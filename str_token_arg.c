@@ -69,6 +69,6 @@ char **str_token_arg(char *str)
 		token = strtok(NULL, " ");
 		i++;
 	}
-	new[n] = NULL;
+	new[i] = NULL;
 	return (new);
 }
