@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * free_paths_value - Function to free memory of the paths and value variables.
+ * free_paths_value - Function to free memory of the paths and value arrays.
  * @paths: It's a pointer to the array of the paths.
  * @value: It's a pointer to the array to the value of PATH env variable.
  *

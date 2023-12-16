@@ -10,6 +10,8 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <limits.h>
+#include <errno.h>
 
 /* Declare the external variables */
 	extern char **environ;
@@ -24,9 +26,10 @@ char **str_token_arg(char *str);
 char **add_to_path(char **paths, char *name);
 int search_program(char **paths);
 int get_and_find(char *name);
-char *get_command(char *str);
+char *get_command(char *str, char *only_path);
 void freeMemory(char **args);
 void printenv(void);
 void free_paths_value(char **paths, char *value);
+void get_absolute_path(char *only_path, char *cwd);
 
 #endif

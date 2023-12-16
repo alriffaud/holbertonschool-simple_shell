@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * printenv - prints the enviroment using environ.
+ * printenv - This function prints the enviroment array using environ.
  *
  * Return: None.
  */

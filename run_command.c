@@ -10,15 +10,16 @@
  */
 void run_command(char **args, char *av)
 {
-	char *env[] = {NULL}, *value, *name;
+	char *env[] = {NULL}, *value, *name, *cwd;
 	char **paths;
 	pid_t child_pid;
-	char path[100];
+	char path[100], only_path[100];
 	size_t i;
 
 	if (args == NULL || args[0] == NULL)
 		return;
-	name = get_command(args[0]);
+	only_path[0] = '\0';
+	name = get_command(args[0], only_path);
 	if (name == NULL)
 		return;
 	if ((get_and_find(name) == 1 || get_and_find(args[0]) == 1))
@@ -36,12 +37,17 @@ void run_command(char **args, char *av)
 			exit(EXIT_FAILURE); }
 		if (child_pid == 0)
 		{
-			snprintf(path, sizeof(path), "./%s", name);
+			sprintf(path, "./%s", name);
 			execve(path, args, env);
 			for (i = 0; paths[i] != NULL && i < strlen(*paths); i++)
 			{
-				snprintf(path, sizeof(path), "%s/%s", paths[i], name);
+				sprintf(path, "%s/%s", paths[i], name);
 				execve(path, args, env); }
+			cwd = malloc(PATH_MAX);
+			get_absolute_path(only_path, cwd);
+			sprintf(path, "%s/%s",cwd , name);
+			execve(path, args, env);
+			free(cwd);
 			perror("execve"), freeMemory(args), free(name);
 			free_paths_value(paths, value);
 			exit(EXIT_FAILURE); }

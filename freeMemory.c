@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * freeMemory - Function to free memory.
+ * freeMemory - Function to free the memory of the args array.
  * @args: It's a pointer to the arguments array.
  *
  * Return: None.

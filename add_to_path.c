@@ -30,7 +30,7 @@ char **add_to_path(char **paths, char *name)
 			free(*new_paths);
 			return (NULL);
 		}
-		snprintf(new_paths[i], new_path_length, "%s/%s", paths[i], name);
+		sprintf(new_paths[i], "%s/%s", paths[i], name);
 	}
 	new_paths[path_count] = NULL;
 	return (new_paths);
