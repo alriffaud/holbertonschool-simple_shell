@@ -17,12 +17,12 @@ int get_and_find(char *name)
 	if (name == NULL)
 		return (-1);
 	value = _getenv("PATH");
-	if (value == NULL)
+	/*if (value == NULL)
 	{
 		fprintf(stderr, "Error: Failed to get PATH\n");
 		free(value);
 		return (-1);
-	}
+	}*/
 	paths = str_token(value);
 	if (paths == NULL)
 	{

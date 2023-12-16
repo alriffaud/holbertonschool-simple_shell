@@ -25,10 +25,10 @@ void run_command(char **args, char *av)
 	if ((get_and_find(name) == 1 || get_and_find(args[0]) == 1))
 	{
 		value = _getenv("PATH");
-		if (value == NULL)
+		/*if (value == NULL)
 		{
 			fprintf(stderr, "Error: Failed to get PATH\n"), free(value);
-			return; }
+			return; }*/
 		paths = str_token(value);
 		child_pid = fork();
 		if (child_pid == -1)
