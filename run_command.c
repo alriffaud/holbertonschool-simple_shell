@@ -39,6 +39,7 @@ void run_command(char **args, char *av)
 		{
 			sprintf(path, "./%s", name);
 			execve(path, args, env);
+                        execve(args[0], args, env);
 			for (i = 0; paths[i] != NULL && i < strlen(*paths); i++)
 			{
 				sprintf(path, "%s/%s", paths[i], name);
