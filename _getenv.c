@@ -28,6 +28,11 @@ char *_getenv(const char *name)
 				free(ptr);
 				return (NULL);
 			}
+			if (strcmp(token, "") == 0)
+			{
+				free(ptr);
+				return ("");
+			}
 			value = strdup(token);
 			free(ptr);
 			if (value == NULL)
