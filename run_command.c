@@ -39,17 +39,17 @@ void run_command(char **args, char *av)
 		{
 			sprintf(path, "./%s", name);
 			execve(path, args, env);
-                        execve(args[0], args, env);
+			/*execve(args[0], args, env);*/
 			for (i = 0; paths[i] != NULL && i < strlen(*paths); i++)
 			{
 				sprintf(path, "%s/%s", paths[i], name);
 				execve(path, args, env); }
 			cwd = malloc(PATH_MAX);
 			get_absolute_path(only_path, cwd);
-			sprintf(path, "%s/%s",cwd , name);
+			sprintf(path, "%s/%s", cwd , name);
 			execve(path, args, env);
 			free(cwd);
-			perror("execve"), freeMemory(args), free(name);
+			perror(args[0]), freeMemory(args), free(name);
 			free_paths_value(paths, value);
 			exit(EXIT_FAILURE); }
 		else
