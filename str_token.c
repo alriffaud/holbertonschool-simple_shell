@@ -40,6 +40,8 @@ char **str_token(char *str)
 	char *token;
 	int i = 0, j, n, len;
 
+	if (str == NULL)
+		return (NULL);
 	len = strlen(str);
 	if (str == NULL || len == 0)
 		return (NULL);

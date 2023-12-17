@@ -10,8 +10,11 @@ void free_paths_value(char **paths, char *value)
 {
 	int i;
 
-	for (i = 0; paths[i] != NULL; i++)
-		free(paths[i]);
-	free(paths);
+	if (paths != NULL)
+	{
+		for (i = 0; paths[i] != NULL; i++)
+			free(paths[i]);
+		free(paths);
+	}
 	free(value);
 }
