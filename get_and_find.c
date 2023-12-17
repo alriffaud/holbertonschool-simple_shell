@@ -36,7 +36,7 @@ int get_and_find(char *name)
 			free(paths[i]);
 		free(paths), free(value);
 	}
-	if (name[0] >= 97 && name[0] <= 122)
+	if (environ != NULL && name[0] >= 97 && name[0] <= 122)
 	{
 		sprintf(path, "./%s", name);
 		if (access(path, F_OK) == 0)
