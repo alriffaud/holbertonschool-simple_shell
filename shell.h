@@ -25,7 +25,7 @@ char **str_token(char *str);
 char **str_token_arg(char *str);
 char **add_to_path(char **paths, char *name);
 int search_program(char **paths);
-int get_and_find(char *name);
+int get_and_find(char *name, char *str);
 char *get_command(char *str, char *only_path);
 void freeMemory(char **args);
 void printenv(void);
