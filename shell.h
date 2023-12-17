@@ -11,7 +11,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <limits.h>
-/*#include <errno.h>*/
+#include <errno.h>
 
 /* Declare the external variables */
 	extern char **environ;
