@@ -33,8 +33,8 @@ void run_command(char **args, char *av)
 			exit(EXIT_FAILURE); }
 		if (child_pid == 0)
 		{
-			sprintf(path, "./%s", name);
-			execve(path, args, env);
+			sprintf(path, "./%s", name), execve(path, args, env);
+			sprintf(path, "/bin/%s", name), execve(path, args, env);
 			for (i = 0; paths[i] != NULL && i < strlen(*paths); i++)
 			{
 				sprintf(path, "%s/%s", paths[i], name);

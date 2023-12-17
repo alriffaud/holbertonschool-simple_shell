@@ -17,11 +17,6 @@ int get_and_find(char *name)
 	if (name == NULL)
 		return (-1);
 	value = _getenv("PATH");
-	/*if (value == NULL)
-	{
-		fprintf(stderr, "Error: Failed to get PATH\n");
-		free(value);
-		return (-1); }*/
 	paths = str_token(value);
 	if (paths == NULL)
 	{
@@ -40,6 +35,9 @@ int get_and_find(char *name)
 	if (name[0] >= 97 && name[0] <= 122)
 	{
 		sprintf(path, "./%s", name);
+		if (access(path, F_OK) == 0)
+			res = 1;
+		sprintf(path, "/bin/%s", name);
 		if (access(path, F_OK) == 0)
 			res = 1; }
 	while (paths_name[j] != NULL)
