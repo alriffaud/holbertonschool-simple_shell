@@ -23,7 +23,7 @@ char *_getenv(const char *name)
 		if (token != NULL && strcmp(name, token) == 0)
 		{
 			token = strtok(NULL, "=");
-			if (token == NULL || strcmp(token, "") == 0)
+			if (token == NULL) /*|| strcmp(token, "") == 0)*/
 			{
 				free(ptr);
 				return (NULL);

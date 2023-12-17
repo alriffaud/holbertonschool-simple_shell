@@ -17,6 +17,8 @@ int get_and_find(char *name)
 	if (name == NULL)
 		return (-1);
 	value = _getenv("PATH");
+	if (value == "")
+		return (-1);
 	paths = str_token(value);
 	if (paths != NULL)
 	{
