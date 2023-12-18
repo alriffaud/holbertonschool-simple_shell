@@ -35,14 +35,16 @@ int get_and_find(char *name, char *str)
 		free(paths_name);
 		for (i = 0; paths[i] != NULL; i++)
 			free(paths[i]);
-		free(paths), free(value);
-	}
+		free(paths), free(value); }
 	if (name[0] >= 97 && name[0] <= 122)
 	{
-		sprintf(path, "./%s", name);
-		if (access(path, F_OK) == 0)
-			res = 1;
-		if (strcmp(str, "ls") != 0 && strcmp(str, "hbtn_ls") != 0)
+		if (strcmp(str, "hbtn_ls") != 0)
+		{
+			sprintf(path, "./%s", name);
+			if (access(path, F_OK) == 0)
+				res = 1;
+		}
+		if (strcmp(str, "ls") != 0)
 		{
 			sprintf(path, "/bin/%s", name);
 			if (access(path, F_OK) == 0)

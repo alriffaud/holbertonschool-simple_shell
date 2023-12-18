@@ -36,9 +36,7 @@ void run_command(char **args, char *av)
 			sprintf(path, "./%s", name), execve(path, args, env);
 			sprintf(path, "/bin/%s", name), execve(path, args, env);
 			for (i = 0; paths != NULL && paths[i] != NULL && i < strlen(*paths); i++)
-			{
-				sprintf(path, "%s/%s", paths[i], name);
-				execve(path, args, env); }
+				sprintf(path, "%s/%s", paths[i], name), execve(path, args, env);
 			cwd = malloc(PATH_MAX);
 			get_absolute_path(only_path, cwd);
 			sprintf(path, "%s/%s", only_path, name);
@@ -49,5 +47,7 @@ void run_command(char **args, char *av)
 			wait(NULL);
 		free_paths_value(paths, value), free(name); }
 	else
+	{
 		fprintf(stderr, "%s: 1: %s: not found\n", av, args[0]), free(name);
+		exit(EXIT_FAILURE); }
 }
