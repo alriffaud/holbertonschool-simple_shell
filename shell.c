@@ -29,12 +29,14 @@ int main(int ac, char *av[])
 		}
 		if (strcmp(args[0], "exit") == 0 || strcmp(str, "exit") == 0)
 		{
-			freeMemory(args);
 			free(str);
 			if (args[1] == NULL)
-				exit(EXIT_SUCCESS);
+				freeMemory(args), exit(EXIT_SUCCESS);
 			else
+			{
+				freeMemory(args);
 				return (2);
+			}
 		}
 		if (strcmp(args[0], "env") == 0 || strcmp(str, "env") == 0)
 		{
