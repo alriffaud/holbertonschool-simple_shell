@@ -49,5 +49,5 @@ void run_command(char **args, char *av)
 			wait(NULL);
 		free_paths_value(paths, value), free(name); }
 	else
-		fprintf(stderr, "%s: %s: not found\n", av, args[0]), free(name);
+		fprintf(stderr, "%s: 1: %s: not found\n", av, args[0]), free(name);
 }
