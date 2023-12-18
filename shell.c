@@ -31,8 +31,10 @@ int main(int ac, char *av[])
 		{
 			freeMemory(args);
 			free(str);
-			/*exit(EXIT_SUCCESS);*/
-			return (2);
+			if (ac == 1)
+				exit(EXIT_SUCCESS);
+			else
+				return (2);
 		}
 		if (strcmp(args[0], "env") == 0 || strcmp(str, "env") == 0)
 		{
