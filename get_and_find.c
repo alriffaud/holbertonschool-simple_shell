@@ -42,7 +42,7 @@ int get_and_find(char *name, char *str)
 		sprintf(path, "./%s", name);
 		if (access(path, F_OK) == 0)
 			res = 1;
-		if (strcmp(str, "ls") != 0)
+		if (strcmp(str, "ls") != 0 && strcmp(str, "hbtn_ls") != 0)
 		{
 			sprintf(path, "/bin/%s", name);
 			if (access(path, F_OK) == 0)
