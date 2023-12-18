@@ -43,7 +43,7 @@ void run_command(char **args, char *av, char *str)
 			sprintf(path, "%s/%s", only_path, name);
 			execve(path, args, env), free(cwd);
 			perror(path), freeMemory(args), free(name);
-			free_paths_value(paths, value), exit(EXIT_FAILURE); }
+			free_paths_value(paths, value), free(str), exit(EXIT_FAILURE); }
 		else
 			wait(NULL);
 		free_paths_value(paths, value), free(name); }
