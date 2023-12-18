@@ -39,7 +39,7 @@ int main(int ac, char *av[])
 			freeMemory(args);
 			continue;
 		}
-		run_command(args, av[0]);
+		run_command(args, av[0], str);
 		freeMemory(args);
 	}
 	free(str);

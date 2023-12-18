@@ -5,10 +5,11 @@
  * entered.
  * @args: It's a pointer to the list of arguments.
  * @av: Is a one-dimensional array of strings.
+ * @str: Is a pointer to the string entered by the user.
  *
  * Return: None.
  */
-void run_command(char **args, char *av)
+void run_command(char **args, char *av, char *str)
 {
 	char *env[] = {NULL}, *value, *name, *cwd;
 	char **paths;
@@ -49,5 +50,5 @@ void run_command(char **args, char *av)
 	else
 	{
 		fprintf(stderr, "%s: 1: %s: not found\n", av, args[0]), free(name);
-		exit(127); }
+		freeMemory(args), free(str), exit(127); }
 }
