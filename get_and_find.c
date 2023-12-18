@@ -4,7 +4,7 @@
  * get_and_find - This function executes the _getenv, str_token, add_to_path
  * and search_program functions.
  * @name: It's the name of the environment variable.
- * @args: It's a pointer to the list of arguments.
+ * @str: It's a pointer to the list of arguments.
  *
  * Return: 1 if the program is found, 0 if it's not, and -1 if there are any
  * errors.
@@ -15,7 +15,6 @@ int get_and_find(char *name, char *str)
 	char **paths, **paths_name;
 	int i, j = 0, res;
 
-	(void) str;
 	if (name == NULL)
 		return (-1);
 	value = _getenv("PATH");
@@ -43,8 +42,11 @@ int get_and_find(char *name, char *str)
 		sprintf(path, "./%s", name);
 		if (access(path, F_OK) == 0)
 			res = 1;
-		sprintf(path, "/bin/%s", name);
-		if (access(path, F_OK) == 0)
-			res = 1; }
+		if (strcmp(str, "ls") != 0)
+		{
+			sprintf(path, "/bin/%s", name);
+			if (access(path, F_OK) == 0)
+				res = 1; }
+	}
 	return (res);
 }

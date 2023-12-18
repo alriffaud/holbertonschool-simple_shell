@@ -22,7 +22,7 @@ void run_command(char **args, char *av)
 	name = get_command(args[0], only_path);
 	if (name == NULL)
 		return;
-	if (get_and_find(name, args[0]) == 1) /*|| get_and_find(args[0]) == 1))*/
+	if (get_and_find(name, args[0]) == 1)
 	{
 		value = _getenv("PATH");
 		paths = str_token(value);
