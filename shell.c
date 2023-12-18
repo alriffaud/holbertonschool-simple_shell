@@ -31,7 +31,7 @@ int main(int ac, char *av[])
 		{
 			freeMemory(args);
 			free(str);
-			if (ac == 1)
+			if (args[1] == NULL)
 				exit(EXIT_SUCCESS);
 			else
 				return (2);
