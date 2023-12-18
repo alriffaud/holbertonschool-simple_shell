@@ -49,5 +49,5 @@ void run_command(char **args, char *av)
 	else
 	{
 		fprintf(stderr, "%s: 1: %s: not found\n", av, args[0]), free(name);
-		exit(EXIT_FAILURE); }
+		exit(127); }
 }
