@@ -8,9 +8,9 @@ This Simple Shell project, is a basic shell implementation with the primary goal
 ## Compilation
 
 To compile the shell, use the following command:
-
+```bash
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o shell
-
+```
 ## Files and functions
 
 * *shell.h:*
@@ -29,6 +29,8 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o shell
   	* Function to get the name of the command entered.
 * *get_and_find.c:*
 	* Function to execute the _getenv.c, str_token.c, add_to_path.c and search_program.c. 
+* *get_absolute_path.c:*
+	* Function to retrieve the absolute path knowing the relative path.
 * *str_token.c:*
 	* Tokenizes a string into arguments.
 * *_getenv.c:*
@@ -51,13 +53,30 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o shell
 
 To run the shell, execute the compiled binary:
 
-
-./shell
-
+```bash
+$ ./shell
+```
 After launching, the shell will display a prompt, allowing users to input commands.
+```bash
+#cisfun$ ls
+AUTHORS  README.md  get_command.c  read_input.c  search_program.c  shell.c  show_prompt.c
+```
+```bash
+#cisfun$ pwd
+/simple-shell
+#cisfun$
+```
+```bash
+#cisfun$ exit
+$
+```
+
 Also, you can redirect the command to be executed in non-interactive mode by the Simple Shell:
 
-
-echo "/bin/ls" | ./shell
+```bash
+$ echo "/bin/ls" | ./shell
+AUTHORS  README.md  get_command.c  read_input.c  search_program.c  shell.c  show_prompt.c
+$ 
+```
 
 
